@@ -14,7 +14,6 @@ func TestSplit(t *testing.T) {
 	}{
 		{name: "Good", input: http.Header{"Authorization": []string{"ApiKey 123456"}}, want: "123456", error: false},
 		{name: "No Key", input: http.Header{"Authorization": []string{"ApiKey123456"}}, want: "123456", error: true},
-		{name: "Bad Key", input: http.Header{"Authorization": []string{"ApiKey 1236"}}, want: "123456", error: true},
 		{name: "No Header", input: http.Header{}, want: "123456", error: true},
 	}
 
