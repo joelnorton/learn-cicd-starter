@@ -1,3 +1,5 @@
+name: cd
+
 on:
   push:
     branches: [main]
@@ -35,3 +37,6 @@ jobs:
 
       - name: Build
         run: gcloud builds submit --tag us-central1-docker.pkg.dev/project-0478e045-6c4c-479f-a28/notely-ar-repo/notely:latest .
+
+      - name: Deploy to Cloud Run
+        run: gcloud run deploy notely --image us-central1-docker.pkg.dev/project-0478e045-6c4c-479f-a28/notely-ar-repo/notely:latest --region us-central1 --allow-unauthenticated --project project-0478e045-6c4c-479f-a28 --max-instances=4
